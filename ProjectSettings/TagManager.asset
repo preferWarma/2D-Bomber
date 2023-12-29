@@ -13,11 +13,11 @@ TagManager:
   - UI
   - Ground
   - Environment
-  - PlayerOrNPC
+  - Player
   - Bomb
   - FX
-  - 
-  - 
+  - NPC
+  - CheckArea
   - 
   - 
   - 

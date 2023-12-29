@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15140a2cdbeb45e4aa409f385b3d6a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombCd: 2
+  bombCd: 1.5
   bombRange: 1.4
   bombForce: 10
   affectLayer:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 2944
