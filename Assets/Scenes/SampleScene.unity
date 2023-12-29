@@ -7207,7 +7207,7 @@ GameObject:
   - component: {fileID: 1175478504}
   - component: {fileID: 1175478503}
   - component: {fileID: 1175478506}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: FX_land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7335,7 +7335,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 03d0f79d27beeb948ac46ed5c0877765, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7536,13 +7536,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpFore: 15
+  bombCd: 1
   groundCheck: {fileID: 985370451}
   groundCheckRadius: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 1349984207}
+  bombPrefab: {fileID: 4684541539363527359, guid: 4be472c7fa5b26247964199689de24b9, type: 3}
 --- !u!95 &1349984209
 Animator:
   serializedVersion: 5
@@ -7608,7 +7610,7 @@ GameObject:
   - component: {fileID: 1628727410}
   - component: {fileID: 1628727412}
   - component: {fileID: 1628727408}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: FX_jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7727,7 +7729,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f430a1b767e42294dab57d91c5fdb002, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
