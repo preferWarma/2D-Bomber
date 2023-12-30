@@ -10,6 +10,7 @@ public class PlayerAnimationController : MonoBehaviour
         private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Ground = Animator.StringToHash("Ground");
         private static readonly int VelocityY = Animator.StringToHash("Velocity_Y");
+        private static readonly int Dead = Animator.StringToHash("Dead");
 
         private void Start()
         {
@@ -22,5 +23,6 @@ public class PlayerAnimationController : MonoBehaviour
                 _animator.SetFloat(VelocityY, PlayerController.Instance.rigidBody.velocity.y);       // 设置Velocity_Y参数
                 _animator.SetBool(Jump, !PlayerController.Instance.isGrounded);       // 设置Jump参数;
                 _animator.SetBool(Ground, PlayerController.Instance.isGrounded);        // 设置Ground参数
+                _animator.SetBool(Dead, PlayerController.Instance.isDead);      // 设置Death参数
         }
 }

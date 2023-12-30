@@ -24,6 +24,19 @@ namespace FSM
         public void OnUpdate()
         {
             _timer += Time.deltaTime;
+
+            if (_parameter.getHit)
+            {
+                _manager.TransitionState(StateType.Hit);
+                return;
+            }
+            
+            if (_parameter.attackList.Count > 0)
+            {
+                _manager.TransitionState(StateType.Chase);
+                return;
+            }
+            
             if (_timer >= _parameter.idleTime)
             {
                 _manager.TransitionState(StateType.Patrol);

@@ -25,9 +25,24 @@ namespace FSM
         public void OnUpdate()
         {
             _manager.FlipDirection(_currentPatrol);   // 巡逻时翻转方向
+            
+            if (_parameter.getHit)
+            {
+                _manager.TransitionState(StateType.Hit);
+                return;
+            }
+            
             // 移动到巡逻点
             _manager.transform.position = Vector2.MoveTowards(_manager.transform.position,
                 _currentPatrol.position, _parameter.moveSpeed * Time.deltaTime);
+            
+            // 发现攻击目标则切换到追击状态
+            if (_parameter.attackList.Count > 0)
+            {
+                _manager.TransitionState(StateType.Chase);
+                return;
+            }
+            
             // 到达时进入Idle状态
             if (Vector2.Distance(_manager.transform.position, _currentPatrol.position) < 0.1f)
             {
