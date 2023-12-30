@@ -8129,10 +8129,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bdc83742094f82af0270ba982ae586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 1450242435}
-  pointB: {fileID: 1304533356}
-  moveSpeed: 2
-  _attackList: []
+  parameter:
+    health: 0
+    moveSpeed: 2
+    chaseSpeed: 0
+    idleTime: 2
+    patrolPoints:
+    - {fileID: 1450242435}
+    - {fileID: 1304533356}
+    chasePoints: []
+    attackList: []
+    currentTarget: {fileID: 0}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
+    attackPoint: {fileID: 0}
+    attackRadius: 0
+    getHit: 0
+    animator: {fileID: 0}
 --- !u!4 &1831811228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7207120348564350370, guid: 69c6469c89bcb8c468a8b1dc1bf36721, type: 3}
