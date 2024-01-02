@@ -210,14 +210,16 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 768
-    attackPoint: {fileID: 8963727580994372117}
+    attackPoint: {fileID: 5128573188202828625}
     normalAttackRadius: 0.8
     skillAttackRadius: 0.8
     normalAttackCd: 1
     skillAttackCd: 1
+    hasBomb: 0
     getHit: 0
     animator: {fileID: 0}
     alertSignal: {fileID: 0}
+  curType: 0
 --- !u!1 &5119087203590596307
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4532776137367732255
 Transform:
   m_ObjectHideFlags: 0

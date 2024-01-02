@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b193f9b81349ba990110e61765b8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canHitBomb: 0
 --- !u!1 &1360994908859608901
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,14 +397,16 @@ MonoBehaviour:
     targetLayer:
       serializedVersion: 2
       m_Bits: 768
-    attackPoint: {fileID: 7452148102225791745}
+    attackPoint: {fileID: 2616009586329968792}
     normalAttackRadius: 1
     skillAttackRadius: 2
     normalAttackCd: 1
     skillAttackCd: 1.5
+    hasBomb: 0
     getHit: 0
     animator: {fileID: 0}
     alertSignal: {fileID: 0}
+  curType: 0
 --- !u!1 &6484160687949757806
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Damage;
 using FSM;
+using Player;
 using UnityEngine;
 
 namespace Enemy

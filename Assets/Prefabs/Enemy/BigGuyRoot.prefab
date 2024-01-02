@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7819379224523289868
 Transform:
   m_ObjectHideFlags: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
     getHit: 0
     animator: {fileID: 0}
     alertSignal: {fileID: 0}
+  curType: 0
   pickPoint: {fileID: 2642282267555333918}
   throwPower: 10
 --- !u!1 &5745143119290066694
