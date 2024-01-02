@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class CucumberController : EnemyController
+    public class BaldPirateController : EnemyController
     {
         private static readonly int Attack = Animator.StringToHash("NormalAttack");
         private static readonly int Skill = Animator.StringToHash("SkillAttack");
@@ -17,14 +17,5 @@ namespace Enemy
         {
             parameter.animator.SetTrigger(Skill);
         }
-        
-        public void SetOff() // Animation event
-        {
-            if (parameter.currentAttackTarget) 
-            {
-                parameter.currentAttackTarget.GetComponent<BombController>()?.TurnOff();
-            }
-        }
-        
     }
 }

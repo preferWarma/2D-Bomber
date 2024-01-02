@@ -25,6 +25,8 @@ namespace FSM
         public void OnUpdate()
         {
             _manager.FlipDirection(_currentPatrol);   // 巡逻时翻转方向
+         
+            if (_parameter.hasBomb) return;
             
             if (_parameter.getHit)
             {

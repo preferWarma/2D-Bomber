@@ -3,8 +3,10 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class CucumberController : EnemyController
+    public class WhaleController : EnemyController
     {
+        private int _swallowed = 0;
+        
         private static readonly int Attack = Animator.StringToHash("NormalAttack");
         private static readonly int Skill = Animator.StringToHash("SkillAttack");
 
@@ -17,14 +19,16 @@ namespace Enemy
         {
             parameter.animator.SetTrigger(Skill);
         }
-        
-        public void SetOff() // Animation event
+
+        private void Swallow() // Animation Event
         {
-            if (parameter.currentAttackTarget) 
+            parameter.currentAttackTarget.GetComponent<BombController>().TurnOff();
+            parameter.currentAttackTarget.gameObject.SetActive(false);
+            if (_swallowed < 3)
             {
-                parameter.currentAttackTarget.GetComponent<BombController>()?.TurnOff();
+                _swallowed++;
+                transform.localScale *= 1.1f;
             }
         }
-        
     }
 }

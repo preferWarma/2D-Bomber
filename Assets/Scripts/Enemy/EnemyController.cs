@@ -15,15 +15,15 @@ namespace Enemy
     public class Parameter  // 参数类
     {
         [Header("基本参数")]
-        [Tooltip("生命值")] public int health;
-        [Tooltip("移动速度")] public float moveSpeed;
-        [Tooltip("追击速度")] public float chaseSpeed;  
-        [Tooltip("停止时间")] public float idleTime;
+        [Tooltip("生命值")] public int health = 3;
+        [Tooltip("移动速度")] public float moveSpeed = 2f;
+        [Tooltip("追击速度")] public float chaseSpeed = 3.5f;  
+        [Tooltip("停止时间")] public float idleTime = 1f;
         [Tooltip("巡逻范围")] public Transform[] patrolPoints;
         // [Tooltip("追击范围")] public Transform[] chasePoints;
         
         [Header("攻击参数")]
-        [Tooltip("攻击力")] public int attackPower;
+        [Tooltip("攻击力")] public int attackPower = 1;
         [Tooltip("攻击目标队列")] public List<Transform> attackList;
         [Tooltip("当前攻击目标")] public Transform currentAttackTarget;
         [Tooltip("攻击目标层级")] public LayerMask targetLayer;
@@ -32,6 +32,9 @@ namespace Enemy
         [Tooltip("技能攻击检测范围半径")] public float skillAttackRadius;
         [Tooltip("普通攻击CD")] public float normalAttackCd;
         [Tooltip("技能攻击CD")] public float skillAttackCd;
+
+        [Header("状态参数")] 
+        [Tooltip("是否已经携带炸弹")] public bool hasBomb;
         [Tooltip("是否是受击状态")] public bool getHit;
         
         [Header("引用组件")]
@@ -42,17 +45,17 @@ namespace Enemy
     public class EnemyController : MonoBehaviour, IDamageable
     {
         public Parameter parameter = new();  // 参数
+        public StateType curType;
         
         private IState _currentState; // 当前状态
         private readonly Dictionary<StateType, IState> _states = new(); // 状态字典
 
-        private void Awake()
+        protected void Awake()
         {
-            parameter.animator = GetComponent<Animator>();
-            parameter.alertSignal = transform.Find("AlertSignal").gameObject;
+            Init();
         }
 
-        private void Start()
+        protected void Start()
         {
             // 状态机注册
              _states.Add(StateType.Idle, new IdleState(this));
@@ -68,7 +71,7 @@ namespace Enemy
             
         }
 
-        private void Update()
+        protected void Update()
         {
             _currentState.OnUpdate();
         }
@@ -77,6 +80,7 @@ namespace Enemy
         {
             _currentState?.OnExit();
             _currentState = _states[newState];
+            curType = newState;
             _currentState.OnEnter();
         }
         
@@ -137,10 +141,22 @@ namespace Enemy
             Gizmos.DrawWireSphere(parameter.attackPoint.position, parameter.skillAttackRadius);
         }
 
+        public virtual void Init()
+        {
+            parameter.animator = GetComponent<Animator>();
+            parameter.alertSignal = transform.Find("AlertSignal").gameObject;
+        }
+
         public virtual void NormalAttack()
         { }
-
+ 
         public virtual void SkillAttack()
+        { }
+
+        public virtual void SkillOnUpdate()
+        { }
+        
+        public virtual void SkillOnExit()
         { }
 
         public virtual void GetHit(int damage)

@@ -1,5 +1,4 @@
-﻿using System;
-using Damage;
+﻿using Damage;
 using UnityEngine;
 
 namespace Enemy
@@ -8,6 +7,7 @@ namespace Enemy
     {
         private EnemyController _controller;
 
+        public bool canHitBomb;
         private void Start()
         {
             _controller = GetComponentInParent<EnemyController>();
@@ -17,13 +17,15 @@ namespace Enemy
         {
             if (other.CompareTag("Player"))
             {
-                print(">>> 玩家受到伤害");
                 other.GetComponent<IDamageable>().GetHit(_controller.parameter.attackPower);
             }
+
             if (other.CompareTag("Bomb"))
             {
-                print(">>> 炸弹被吹灭");
-            } 
+                if (!canHitBomb) return;
+                var dir = transform.position.x > other.transform.position.x ? -1 : 1;
+                other.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir * 10, 10), ForceMode2D.Impulse);
+            }
         }
     }
 }

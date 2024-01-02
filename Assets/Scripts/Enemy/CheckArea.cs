@@ -14,7 +14,7 @@ namespace Enemy
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_parameter.attackList.Contains(other.transform)) return;
+            if (_parameter.attackList.Contains(other.transform) || _parameter.hasBomb) return;
             _parameter.attackList.Add(other.transform);
             _manager.ChooseTarget();
             StartCoroutine(OnAlert());
@@ -30,6 +30,8 @@ namespace Enemy
         // 用协程实现警示标识，警示动画播放完成后关闭显示
         private IEnumerator OnAlert()
         {
+            if (_parameter.health == 0) yield return null;
+            
             _parameter.alertSignal.SetActive(true);
             yield return new WaitForSeconds(_parameter.alertSignal.GetComponent<Animator>().
                 GetCurrentAnimatorClipInfo(0)[0].clip.length);  // 等待动画播放完成
